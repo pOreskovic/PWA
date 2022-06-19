@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Karate</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <meta name="keywords" content="Karate, borba, vještine, samoobrana, povijest, japan, kihon, kate, kumite">
+    <meta name="description" content="Informacije o sportu Karate">
+    <meta name="author" content="Petar Orešković">
+    <link rel="stylesheet" href="css-bootstrap/bootstrap.min.css"/>
+    <script src="https://kit.fontawesome.com/eff7ce4bd1.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-5 col-sm-4">
+                    <img src="images/icon-white.png">
+                </div>
+                <div class="col-xl-2 col-lg-7 col-md-7 col-sm-8">
+                    <h1>Karate</h1>
+                </div>
+                <div class="col-xl-8 col-lg-3 col-md-12 col-sm-12">
+                    <nav>
+                        <ul>
+                            <li><a href="index.php" >Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="kategorija.php?id=World News">World News</a></li>
+                            <li><a href="kategorija.php?id=Upcoming Competitions">Competitions</a></li>
+                            <li><a href="admin.html" style="border: 3px solid #f44336;">Admin</a></li>
+                            <li><a href="unos.html" >New Page</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--MAIN-->
+    <main class="login" style="min-height: 650px;">
+        <form method="post" action="administracija.php">
+            <h1>dmin Login</h1>
+
+            <label>Username</label><br>
+            <input type="text" name="loginUser"/><br>
+
+            <label>Password</label><br>
+            <input type="password" name="loginPass"/><br>
+
+            <input class="loginButton" type="submit" value="Log In" name="loginButton"/>
+        </form>
+        
+    </main>
+    <!--FOOTER-->
+    <footer style="margin-top: 0px; padding: 50px 0; min-height: 100px;">
+        Autor ~ Petar Orešković
+        <br />
+        Kontakt ~ petar.oreskovic@tvz.hr
+        <br/>
+        2022.
+    </footer>
+</body>
+</html>

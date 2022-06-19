@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Karate</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <meta name="keywords" content="Karate, borba, vještine, samoobrana, povijest, japan, kihon, kate, kumite">
+    <meta name="description" content="Informacije o sportu Karate">
+    <meta name="author" content="Petar Orešković">
+    <link rel="stylesheet" href="css-bootstrap/bootstrap.min.css"/>
+    <script src="https://kit.fontawesome.com/eff7ce4bd1.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <!--HEADER-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-5 col-sm-4">
+                    <img src="images/icon-white.png">
+                </div>
+                <div class="col-xl-2 col-lg-7 col-md-7 col-sm-8">
+                    <h1>Karate</h1>
+                </div>
+                <div class="col-xl-8 col-lg-3 col-md-12 col-sm-12">
+                    <nav>
+                        <ul>
+                            <li><a href="index.php" >Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="kategorija.php?id=World News">World News</a></li>
+                            <li><a href="kategorija.php?id=Upcoming Competitions">Competitions</a></li>
+                            <li><a href="admin.html" >Admin</a></li>
+                            <li><a href="unos.html" style="border: 3px solid #f44336;">New Page</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--MAIN-->
+    <main>
+        <form action="skripta.php" method="post" class="unos" name="unosVijesti" enctype="multipart/form-data">
+            <h1>nos vijesti</h1>
+            <br>
+            <label>Naslov vijesti</label><br/>
+            <input type="text"  name="naslov" id="unosNaslov" class="naslov" autofocus="on" /><br/><span id="errorNaslov" class="error"></span><br>
+            
+
+            <br/>
+            
+            <textarea name="sazetak" cols="60" rows="5" id="unosSazetak" >Sazetak vijesti unijeti ovdje.</textarea><br/>
+            <span id="errorSazetak" class="error"></span>
+            
+
+            <br/>
+            <br>
+            <textarea name="sadrzaj" cols="60" rows="10" id="unosSadrzaj">Sadrzaj vijesti unijeti ovdje.</textarea><br/>
+            <span id="errorSadrzaj" class="error"></span>
+            
+
+            <br>
+            <span id="errorKategorija" class="error"></span><br>
+
+            <label>Kategorija vijesti</label><br>
+            <select name="kategorija" id="kategorija">
+                <option value="" disabled selected>Odabir kategorije</option>
+                <option value="World News">World News</option>
+                <option value="Upcoming Competitions">Competitions</option>
+            </select><br/><br>
+
+
+            <span id="errorIMG" class="error"></span><br>
+            <label for="img" class="imgButton" id="labelIMG">Izaberi sliku</label><br/>
+            <input type="file" id="img" accept="image/jpg" name="Nphoto" style="display:none;" ><br>
+            
+            
+            <label>Spremiti u arhivu?</label>
+            <input type="checkbox" name="arhiviraj"/>
+
+            <br><br>
+            <input type="submit" class="imgButton"  id="confirmButton" value="Izradi vijest" name="send">
+        </form>
+
+
+        <script type="text/javascript">
+
+            document.getElementById("confirmButton").onclick = function(event){
+                var slanjeForme = true;
+                var naslov = document.getElementById("unosNaslov").value;
+                var sazetak = document.getElementById("unosSazetak").value;
+                var sadrzaj = document.getElementById("unosSadrzaj").value;
+                var slika = document.getElementById("img").value;
+                var kat = document.getElementById("kategorija");
+
+                if(naslov.length < 5 || naslov.length > 30){
+                    document.getElementById("errorNaslov").innerHTML = "Naslov vijesti mora imati izmedu 5 i 30 znakova!";
+                    document.getElementById("unosNaslov").style.border="4px solid #f44336";
+                    slanjeForme = false;
+                }
+
+                if(sazetak.length < 10 || sazetak.length > 100){
+                    document.getElementById("errorSazetak").innerHTML = "Sazetak mora imati izmedu 10 i 100 znakova!";
+                    document.getElementById("unosSazetak").style.border="4px solid #f44336";
+                    slanjeForme = false;
+                }
+
+                if(sadrzaj.length < 1){
+                    document.getElementById("errorSadrzaj").innerHTML = "Sadrzaj nesmije biti prazan!";
+                    document.getElementById("unosSadrzaj").style.border="4px solid #f44336";
+                    slanjeForme = false;
+                }
+
+                if(slika.length == 0){
+                    slanjeForme = false;
+                    document.getElementById("errorIMG").innerHTML = "Slika mora biti odabrana!";
+                    document.getElementById("labelIMG").style.border="4px solid #f44336";
+                }
+
+                if(document.getElementById("kategorija").selectedIndex == 0) {
+                    slanjeForme = false;
+                    kat.style.border= "4px solid #f44336";
+
+                    document.getElementById("errorKategorija").innerHTML="Kategorija mora biti odabrana!";
+                }
+
+                if(slanjeForme!=true){
+                    event.preventDefault();
+                }
+            }
+        </script>
+
+
+    </main>
+    <!--FOOTER-->
+    <footer style="margin-top: 0px; padding: 50px 0; min-height: 100px;">
+        Autor ~ Petar Orešković
+        <br />
+        Kontakt ~ petar.oreskovic@tvz.hr
+        <br/>
+        2022.
+    </footer>
+</body>
+</html>
